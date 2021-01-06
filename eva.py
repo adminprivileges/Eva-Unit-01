@@ -137,12 +137,6 @@ async def test():
             channel = client.get_channel(776197972865056778)
             ezgmail.send('thaddeuskoenig@gmail.com', f'Muster for {date_var}', f'Good Moorning,\nAttached I have included the muster for {date_var}, if there are any questions please inform the muster PO', [f"{date.today()}.csv"])
             await channel.send('Muster Sent')
-            #https://discordpy.readthedocs.io/en/latest/faq.html#how-do-i-send-a-message-to-a-specific-channel
-
-
-    #await self.client.send("yes")
-#https://www.programcreek.com/python/example/127968/discord.ext.tasks.loop
-#https://www.reddit.com/r/Discord_Bots/comments/g76ax6/discordpy_schedule_daily_tasks/foftglt/
 
 client.run(<TOKEN>)
 
