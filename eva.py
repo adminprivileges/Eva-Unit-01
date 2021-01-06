@@ -20,21 +20,6 @@ async def on_ready():
 @client.event
 async def on_message(message):
     message.content = message.content.lower()
-    #Start of dirty code ===========================================
-    bullshit = ["shipmate",
-    "tradition",
-    "discuss",
-    "hooyah",
-    "understand",
-    "curious",
-    "semantics"
-    ]
-    if message.author == client.user:
-        return
-    elif message.content in bullshit and "7554" in str(message.author):
-        await message.delete()
-    #end dirty code ===================================================
-
     await client.process_commands(message) #This is needed to enable commands an events
 
 @client.command()
