@@ -13,3 +13,4 @@ import ezgmail, os
 os.chdir(r'C:\path\to\credentials_json_file')
 ezgmail.init()
 ```
+This book helped me with the email part https://learning.oreilly.com/library/view/automate-the-boring/9781098122584/xhtml/ch18.xhtml#ch18lev1sec3
