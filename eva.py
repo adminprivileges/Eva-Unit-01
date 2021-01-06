@@ -144,5 +144,5 @@ async def test():
 #https://www.programcreek.com/python/example/127968/discord.ext.tasks.loop
 #https://www.reddit.com/r/Discord_Bots/comments/g76ax6/discordpy_schedule_daily_tasks/foftglt/
 
-client.run('Nzc2MTMwNTEzOTExNDE0ODI0.X6wZ3g.nkMmrnIE8ohGJP0V5cnG0my7HFQ')
+client.run(<TOKEN>)
 
