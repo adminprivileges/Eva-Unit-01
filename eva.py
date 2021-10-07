@@ -35,7 +35,7 @@ async def on_ready(): # When the bot boots
 @client.event
 async def on_message(message): #Waits on Messages 
     person = message.author.nick
-    muster_channel = client.get_channel(802940334421311528) #Specify discord channel
+    muster_channel = client.get_channel(775027173022498828) #Specify discord channel
     message.content = message.content.lower()
     if message.author == client.user:
         return
@@ -83,7 +83,7 @@ async def muster(ctx, arg1="help"):
 async def test():
     #Loop goes once a min to look for any specified task times
     print(datetime.datetime.now().strftime("%H:%M"))
-    if datetime.datetime.now().strftime("%H:%M") == "08:00":
+    if datetime.datetime.now().strftime("%H:%M") == "15:53":
         #Make sure its not a weekend
         if str(datetime.datetime.today().strftime("%A")) not in ['Saturday', 'Sunday']:
             date_var = str(datetime.date.today())
@@ -91,15 +91,15 @@ async def test():
             dframe_logic = f"SELECT * FROM muster WHERE muster_date = \'{str(datetime.date.today().strftime('%m/%d/%Y'))}\'"
             df = create_connection(None, dframe_logic)
             df.to_csv(f"{date_var}.csv", index=False)
-            channel = client.get_channel(776197972865056778)
+            channel = client.get_channel(775027106823405588)
             #Fields are ("Recipient", "Subject", "Body", ["Attachment"], cc="recipient", bcc="person1, person2")
-            ezgmail.send('thaddeuskoenig@gmail.com', f'Muster for {date_var}', f'Good Moorning,\nAttached I have included the muster for {date_var}, if there are any questions please inform the muster PO', [f"{date.today()}.csv"])
+            ezgmail.send(f'{eva_vars.muster_emails}', f'Muster for {date_var}', f'Good Moorning,\nAttached I have included the muster for {date_var}, if there are any questions please inform the muster PO', [f"{date_var}.csv"])
             await channel.send('Muster Sent') #ACK
         
     elif datetime.datetime.now().strftime("%H:%M") == "05:00":
         #Scrape Navadmin page
-        today = datetime.date.today()
-        channel = client.get_channel(776197972865056778) #Specify discord channel
+        #today = datetime.date.today()
+        channel = client.get_channel(775027173022498828) #Specify discord channel
         #The navy is big dumb and changed the URL structure in 2021 so thats the only year it'll work for
         URL = f'https://www.mynavyhr.navy.mil/References/Messages/NAVADMIN-{datetime.date.today().year}'
         page = requests.get(URL)
@@ -125,7 +125,7 @@ async def test():
                         sql_logic = (f"INSERT INTO navadmin(message_id, title, admin_date, link) VALUES(\'{message_id}\', \'{title}\', \'{admin_date}\', \'{link}\')")
                         #print(sql_logic)
                         create_connection(sql_logic)
-                        await channel.send(f"""Hey guys theres a new Navadmin \nDate: {admin_date} \nTitle: {title}\nLink: {link} """)
+                        await channel.send(f"""Good morning @everyone theres a new Navadmin \nDate: {admin_date} \nTitle: {title}\nLink: {link} """)
                     else:
                         break
                 except IndexError:
